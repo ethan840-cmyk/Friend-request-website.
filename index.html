@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanna be my friend?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #ffcccb, #c2e9fb); /* Pink to Blue gradient */
+            color: #333;
+        }
+        h1 {
+            font-size: 36px;
+            color: #4b4b4b;
+        }
+        p {
+            font-size: 20px;
+        }
+        .btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 20px;
+            cursor: pointer;
+        }
+        .btn-yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-no {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wanna be my friend?</h1>
+    <p>I've been thinking about this for a while... So I decided to ask!</p>
+    <button class="btn btn-yes" onclick="trackAnswer('Yes')">Yes! Let’s be friends!</button>
+    <button class="btn btn-no" onclick="trackAnswer('No')">Maybe next time...</button>
+
+    <script>
+        function trackAnswer(answer) {
+            // Send the response to the Flask backend or any tracking system
+            fetch('http://xxxxx.ngrok.io/track', {  // Replace with your own Ngrok link or server URL
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'response=' + answer
+            }).then(response => response.text())
+              .then(data => alert('Thanks for responding: ' + answer));
+        }
+    </script>
+</body>
+</html>
